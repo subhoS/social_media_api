@@ -13,3 +13,8 @@
 --     );
 -- SELECT *
 -- from users;
+INSERT INTO adminpost (postname, content)
+VALUES (
+        "testsdasd",
+        "testjopaksdpakspdkasdoapskdp"
+    );

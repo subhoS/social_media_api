@@ -170,26 +170,26 @@ const hardDelete = (request, response) => {
 
 //[adminPostApi]
 
-const viewAllPost = (request, response) => {
-  console.log("hitting");
-  pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    let object = {
-      responsecode: "200",
-      responsemessage: "allUsersShown",
-      result: results.rows,
-    };
-    if (results.rows.length > 0) {
-      response.status(200).json(object);
-    } else {
-      object.responsemessage = "nodata found";
-      object.responsecode = "400";
-      response.status(200).json(object);
-    }
-  });
-};
+// const viewAllPost = (request, response) => {
+//   console.log("hitting");
+//   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
+//     if (error) {
+//       throw error;
+//     }
+//     let object = {
+//       responsecode: "200",
+//       responsemessage: "allUsersShown",
+//       result: results.rows,
+//     };
+//     if (results.rows.length > 0) {
+//       response.status(200).json(object);
+//     } else {
+//       object.responsemessage = "nodata found";
+//       object.responsecode = "400";
+//       response.status(200).json(object);
+//     }
+//   });
+// };
 
 
 

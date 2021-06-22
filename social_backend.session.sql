@@ -1,0 +1,16 @@
+-- CREATE TABLE users (
+--     ID SERIAL PRIMARY KEY,
+--     active INT DEFAULT 1,
+--     name VARCHAR(30),
+--     email VARCHAR(30),
+--     mo_number INT
+-- );
+-- INSERT INTO users (active, name, email, mo_number)
+-- VALUES (
+--         0,
+--         'happy',
+--         'happy@happy',
+--         99999
+--     );
+-- SELECT *
+-- from users;

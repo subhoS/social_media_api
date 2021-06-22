@@ -1,9 +1,8 @@
--- CREATE TABLE users (
---     ID SERIAL PRIMARY KEY,
---     active INT DEFAULT 1,
---     name VARCHAR(30),
---     email VARCHAR(30),
---     mo_number INT
+-- CREATE TABLE adminpost (
+--     postId SERIAL PRIMARY KEY,
+--     achive INT DEFAULT 1,
+--     postName VARCHAR(30),
+--     content TEXT,
 -- );
 -- INSERT INTO users (active, name, email, mo_number)
 -- VALUES (

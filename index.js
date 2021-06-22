@@ -12,6 +12,7 @@ app.use(
     origin: "http://localhost:3000/",
   })
 );
+
 app.use(helmet());
 
 app.use(bodyParser.json());
@@ -40,6 +41,17 @@ app.put("/changeActivity/",db.softDelete)
 app.delete("/deleteAccount/",db.hardDelete)
 
 //adminAlearApi
+// app.get("/getAdminPost/",db.viewAllPost)
+
+// app.get("/getAdminPostbyid/:id",db.postById)
+
+// app.get("/archivePost/",db.archivePost)
+
+// app.get("changeArchiveStatus",db.changeArchivePost)
+
+// app.post("/uploadApi",db.uploadPost)
+
+// app.post("/deletePost",db.deletePost)
 
 app.listen(port, () => {
   console.log(`App running on ${port}`);

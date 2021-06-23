@@ -223,9 +223,37 @@ const postById = (request, response) => {
   });
 };
 
-// const archivePost = (request,response) => {
+let id;
 
-// }
+const archivePost = (request,response) => {
+  const { postid } = request.body;
+  console.log(postid)
+  pool.query(`SELECT * FROM adminpost Where postid= ${postid}`,(error,results)=> {
+    // console.log(results.rows)
+    if (results.rows[0].achive == 1) {
+      id = 0
+    }else{
+      id = 1
+    }
+    pool.query(`UPDATE adminpost set achive = ${id}`,(err,data) => {
+      if (err) {
+        throw err;
+      }
+      let object = {
+        responsecode:"200",
+        responsecode:"activity changed",
+      };
+      if (results.rows.length > 0) {
+        response.status(200).json(object);
+      } else {
+        object.responsemessage = "Database related error";
+        object.responsecode = "400";
+        response.status(200).json(object);
+      }
+    })
+  })
+
+}
 
 module.exports = {
   ShowUsers,
@@ -235,5 +263,6 @@ module.exports = {
   softDelete,
   hardDelete,
   viewAllPost,
-  postById
+  postById,
+  archivePost
 };

@@ -46,7 +46,7 @@ app.get("/getAdminPost/",db.viewAllPost)
 
 app.get("/getAdminPostbyid/:postid",db.postById)
 
-// app.get("/archivePost/",db.archivePost)
+app.put("/archivePost/",db.archivePost)
 
 // app.get("changeArchiveStatus",db.changeArchivePost)
 

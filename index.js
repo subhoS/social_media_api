@@ -41,9 +41,10 @@ app.put("/changeActivity/",db.softDelete)
 app.delete("/deleteAccount/",db.hardDelete)
 
 //adminAlearApi
-// app.get("/getAdminPost/",db.viewAllPost)
 
-// app.get("/getAdminPostbyid/:id",db.postById)
+app.get("/getAdminPost/",db.viewAllPost)
+
+app.get("/getAdminPostbyid/:postid",db.postById)
 
 // app.get("/archivePost/",db.archivePost)
 

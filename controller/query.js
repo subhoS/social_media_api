@@ -170,29 +170,62 @@ const hardDelete = (request, response) => {
 
 //[adminPostApi]
 
-// const viewAllPost = (request, response) => {
-//   console.log("hitting");
-//   pool.query("SELECT * FROM users ORDER BY id ASC", (error, results) => {
-//     if (error) {
-//       throw error;
-//     }
-//     let object = {
-//       responsecode: "200",
-//       responsemessage: "allUsersShown",
-//       result: results.rows,
-//     };
-//     if (results.rows.length > 0) {
-//       response.status(200).json(object);
-//     } else {
-//       object.responsemessage = "nodata found";
-//       object.responsecode = "400";
-//       response.status(200).json(object);
-//     }
-//   });
-// };
+const viewAllPost = (request, response) => {
+  console.log("hitting");
+  pool.query("SELECT * FROM adminpost ORDER BY postid ASC", (error, results) => {
+    if (error) {
+      throw error;
+    }
+    let object = {
+      responsecode: "200",
+      responsemessage: "ALL Post Showned",
+      result: results.rows,
+    };
+    if (results.rows.length > 0) {
+      response.status(200).json(object);
+    } else {
+      object.responsemessage = "nodata found";
+      object.responsecode = "400";
+      response.status(200).json(object);
+    }
+  });
+};
+
+const postById = (request, response) => {
+  const postid = parseInt(request.params.postid)
+  console.log("hitting");
+  pool.query(`SELECT * FROM adminpost Where postid= ${postid}`, (error, results) => {
+    if (error) {
+      throw error;
+    }
+    // console.log(results.rows[0].achive)
+    
+    // if (results.rows[0].achive == 1){
+    //   results.rows[0].achive == 0
+    // }else{
+    //   results.rows[0].achive == 1
+    // }
+    
+    let object = {
+      responsecode: "200",
+      responsemessage: "ALL Post Showned",
+      result: results.rows,
+    };
 
 
+    if (results.rows.length > 0) {
+      response.status(200).json(object);
+    } else {
+      object.responsemessage = "nodata found";
+      object.responsecode = "400";
+      response.status(200).json(object);
+    }
+  });
+};
 
+// const archivePost = (request,response) => {
+
+// }
 
 module.exports = {
   ShowUsers,
@@ -201,5 +234,6 @@ module.exports = {
   signUp,
   softDelete,
   hardDelete,
-  // viewAllPost
+  viewAllPost,
+  postById
 };

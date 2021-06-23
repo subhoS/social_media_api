@@ -255,6 +255,41 @@ const archivePost = (request,response) => {
 
 }
 
+const uploadApi = (request, response) => {
+  const { postname, content } = request.body;
+  pool.query(
+    "INSERT INTO adminpost (postname, content) VALUES ($1, $2)",
+    [postname,content],
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      pool.query(
+        "SELECT * from adminpost where id=(select max(id) from users)",
+        (err, data) => {
+          if (err) {
+            throw err;
+          }
+          let object = {
+            responsecode: "200",
+            responsemessage: "the post have been uploaded ",
+            result: data.rows,
+          };
+          if (data.rows.length > 0) {
+            response.status(200).json(object);
+          } else {
+            object.responsemessage = "Database related error";
+            object.responsecode = "400";
+            response.status(200).json(object);
+          }
+        }
+      );
+    }
+  );
+};
+
+
+
 module.exports = {
   ShowUsers,
   ShowActiveUsers,
@@ -264,5 +299,6 @@ module.exports = {
   hardDelete,
   viewAllPost,
   postById,
-  archivePost
+  archivePost,
+  uploadApi
 };

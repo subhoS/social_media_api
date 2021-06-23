@@ -48,9 +48,7 @@ app.get("/getAdminPostbyid/:postid",db.postById)
 
 app.put("/archivePost/",db.archivePost)
 
-// app.get("changeArchiveStatus",db.changeArchivePost)
-
-// app.post("/uploadApi",db.uploadPost)
+app.post("/uploadApi/",db.uploadApi)
 
 // app.post("/deletePost",db.deletePost)
 

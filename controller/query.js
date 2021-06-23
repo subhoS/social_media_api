@@ -201,5 +201,5 @@ module.exports = {
   signUp,
   softDelete,
   hardDelete,
-  viewAllPost
+  // viewAllPost
 };

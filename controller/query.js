@@ -288,6 +288,21 @@ const uploadApi = (request, response) => {
   );
 };
 
+const deletePost = (request, response) => {
+  const { postid } = request.query;
+  pool.query("DELETE FROM adminpost WHERE postid = $1", [postid], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    let object = {
+      responsecode: "200",
+      responsemessage: "your post have been deleted",
+    };
+    response.status(200).json(object);
+  });
+};
+
+
 
 
 module.exports = {
@@ -300,5 +315,6 @@ module.exports = {
   viewAllPost,
   postById,
   archivePost,
-  uploadApi
+  uploadApi,
+  deletePost
 };

@@ -50,7 +50,7 @@ app.put("/archivePost/",db.archivePost)
 
 app.post("/uploadApi/",db.uploadApi)
 
-// app.post("/deletePost",db.deletePost)
+app.delete("/deletePost/",db.deletePost)
 
 app.listen(port, () => {
   console.log(`App running on ${port}`);
